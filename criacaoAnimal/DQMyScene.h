@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "DQAnimal.h"
 
 @interface DQMyScene : SKScene
 

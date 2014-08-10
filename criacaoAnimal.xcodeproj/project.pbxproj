@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C55A4D6F198FBE7A00C5B87E /* DQJogador.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A4D6E198FBE7A00C5B87E /* DQJogador.m */; };
+		C55A4D71198FBF1E00C5B87E /* Leopardinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */; };
+		C55A4D74198FC56600C5B87E /* DQIsca.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A4D73198FC56600C5B87E /* DQIsca.m */; };
 		C5618773198F04760021AE64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5618772198F04760021AE64 /* Foundation.framework */; };
 		C5618775198F04760021AE64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5618774198F04760021AE64 /* CoreGraphics.framework */; };
 		C5618777198F04760021AE64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5618776198F04760021AE64 /* UIKit.framework */; };
@@ -24,6 +27,7 @@
 		C561879B198F04760021AE64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5618776198F04760021AE64 /* UIKit.framework */; };
 		C56187A3198F04760021AE64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C56187A1198F04760021AE64 /* InfoPlist.strings */; };
 		C56187A5198F04760021AE64 /* criacaoAnimalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C56187A4198F04760021AE64 /* criacaoAnimalTests.m */; };
+		C56187B0198F048A0021AE64 /* DQAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = C56187AF198F048A0021AE64 /* DQAnimal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C55A4D6D198FBE7A00C5B87E /* DQJogador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQJogador.h; sourceTree = "<group>"; };
+		C55A4D6E198FBE7A00C5B87E /* DQJogador.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQJogador.m; sourceTree = "<group>"; };
+		C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopardinho.atlas; sourceTree = "<group>"; };
+		C55A4D72198FC56600C5B87E /* DQIsca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQIsca.h; sourceTree = "<group>"; };
+		C55A4D73198FC56600C5B87E /* DQIsca.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQIsca.m; sourceTree = "<group>"; };
 		C561876F198F04760021AE64 /* criacaoAnimal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = criacaoAnimal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5618772198F04760021AE64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5618774198F04760021AE64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +69,8 @@
 		C56187A0198F04760021AE64 /* criacaoAnimalTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "criacaoAnimalTests-Info.plist"; sourceTree = "<group>"; };
 		C56187A2198F04760021AE64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C56187A4198F04760021AE64 /* criacaoAnimalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = criacaoAnimalTests.m; sourceTree = "<group>"; };
+		C56187AE198F048A0021AE64 /* DQAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAnimal.h; sourceTree = "<group>"; };
+		C56187AF198F048A0021AE64 /* DQAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAnimal.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +101,13 @@
 		C5618766198F04760021AE64 = {
 			isa = PBXGroup;
 			children = (
+				C55A4D72198FC56600C5B87E /* DQIsca.h */,
+				C55A4D73198FC56600C5B87E /* DQIsca.m */,
+				C56187AE198F048A0021AE64 /* DQAnimal.h */,
+				C56187AF198F048A0021AE64 /* DQAnimal.m */,
+				C55A4D6D198FBE7A00C5B87E /* DQJogador.h */,
+				C55A4D6E198FBE7A00C5B87E /* DQJogador.m */,
+				C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */,
 				C561877A198F04760021AE64 /* criacaoAnimal */,
 				C561879E198F04760021AE64 /* criacaoAnimalTests */,
 				C5618771198F04760021AE64 /* Frameworks */,
@@ -241,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C55A4D71198FBF1E00C5B87E /* Leopardinho.atlas in Resources */,
 				C561877F198F04760021AE64 /* InfoPlist.strings in Resources */,
 				C5618792198F04760021AE64 /* Images.xcassets in Resources */,
 				C5618790198F04760021AE64 /* Spaceship.png in Resources */,
@@ -264,8 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5618781198F04760021AE64 /* main.m in Sources */,
+				C56187B0198F048A0021AE64 /* DQAnimal.m in Sources */,
 				C561878B198F04760021AE64 /* DQViewController.m in Sources */,
+				C55A4D6F198FBE7A00C5B87E /* DQJogador.m in Sources */,
 				C5618785198F04760021AE64 /* DQAppDelegate.m in Sources */,
+				C55A4D74198FC56600C5B87E /* DQIsca.m in Sources */,
 				C561878E198F04760021AE64 /* DQMyScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +495,7 @@
 				C56187AA198F04760021AE64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C56187AB198F04760021AE64 /* Build configuration list for PBXNativeTarget "criacaoAnimalTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +504,7 @@
 				C56187AD198F04760021AE64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
