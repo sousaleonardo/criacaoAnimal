@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		942E8104199AA67A00D3FAF6 /* DQAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = C56187AF198F048A0021AE64 /* DQAnimal.m */; };
 		C55A4D6F198FBE7A00C5B87E /* DQJogador.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A4D6E198FBE7A00C5B87E /* DQJogador.m */; };
 		C55A4D71198FBF1E00C5B87E /* Leopardinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */; };
 		C55A4D74198FC56600C5B87E /* DQIsca.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A4D73198FC56600C5B87E /* DQIsca.m */; };
@@ -296,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942E8104199AA67A00D3FAF6 /* DQAnimal.m in Sources */,
 				C56187A5198F04760021AE64 /* criacaoAnimalTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,8 +418,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "criacaoAnimal/criacaoAnimal-Prefix.pch";
 				INFOPLIST_FILE = "criacaoAnimal/criacaoAnimal-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -430,8 +434,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "criacaoAnimal/criacaoAnimal-Prefix.pch";
 				INFOPLIST_FILE = "criacaoAnimal/criacaoAnimal-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

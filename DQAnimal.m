@@ -16,49 +16,49 @@
         self.spriteAnimal=[SKSpriteNode spriteNodeWithImageNamed:imagemAnimal];
         self.raioVisao=rVisao;
         self.nomeAnimal=nome;
+        self.distanciaAndar=60;
+        self.tempoAndar=2;
+        
         
         [self addChild:self.spriteAnimal];
+        [self.spriteAnimal setScale:0.9f];
         
-        [self iniciarAnimacao:@"andando"];
+        self.dirCaminhada='D';
+        
+        [self atacar];
     }
     return self;
 }
 
--(void)definirDirAndarDireira{
-    //variavel SKAction- define a direcao do movimento
-    SKAction *andarEsquerda =[[SKAction alloc]init];
+-(void)andar{
+    SKAction *andar;
     
-    self.dirCaminhada='D';
+    if (self.dirCaminhada=='D') {
+        andar=[SKAction moveByX:self.distanciaAndar y:0 duration:self.tempoAndar];
+        
+        self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*-1;
+    }else if (self.dirCaminhada=='E'){
+        andar=[SKAction moveByX:(self.distanciaAndar * -1) y:0 duration:self.tempoAndar];
+        
+        self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*1;
+    }
     
-    andarEsquerda =[SKAction moveByX:90 y:0 duration:1.0];
+    if (andar) {
+        [self runAction:[SKAction sequence:@[andar,[SKAction performSelector:@selector(pararAnimacao) onTarget:self]]]];
+        [self iniciarAnimacao:@"andando"];
+    }
     
-    //Leonardo 13/06/2014 - alterado para dar xScale na propriedade spriteNode
-    self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*-1;
-    
-    [self andar:andarEsquerda];
 }
 
--(void)definirDirAndarEsquerda{
-    //variavel SKAction- define a direcao do movimento
-    SKAction *andarEsquerda =[[SKAction alloc]init];
-    
-    self.dirCaminhada='E';
-    
-    andarEsquerda =[SKAction moveByX:-90 y:0 duration:1.0];
-    
-    //Leonardo 13/06/2014 - alterado para dar xScale na propriedade spriteNode
-    self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*-1;
-    
-    [self andar:andarEsquerda];
-}
-
--(void)andar:(SKAction*)andar{
-    
-    [self runAction:[SKAction repeatAction:andar count:3]];
+-(void)pararAnimacao{
+    [self removeActionForKey:@"andando"];
+    [self.spriteAnimal removeActionForKey:@"animandoAnimal"];
 }
 
 -(void)atacar{
-    
+
+    [self iniciarAnimacao:@"atacando"];
+    [self pararAnimacao];
 }
 
 -(void)rastrearArea{
@@ -69,18 +69,18 @@
     return NSSelectorFromString([self.acoes firstObject]);
 }
 
--(void)animarAnimal{
+-(void)x{
     [self.spriteAnimal runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:framesAnimacao
-                                                                              timePerFrame:0.3f
-                                                                                    resize:NO
-                                                                                   restore:YES]] withKey:@"animandoAndando"];
+                                                                                timePerFrame:0.3f
+                                                                                      resize:NO
+                                                                                     restore:YES]] withKey:@"animandoAnimal"];
 }
 
 -(void)iniciarAnimacao:(NSString*)tipoAnimacao{
     SKTextureAtlas *pastaFrames= [SKTextureAtlas atlasNamed:self.nomeAnimal];
     
     framesAnimacao = [[NSMutableArray alloc]init];
-
+    
     int nImagens=0;
     
     for (NSString *nomeTextura in [pastaFrames textureNames]) {
