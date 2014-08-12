@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F2401D4E-7601-4C3C-A62D-AF3B305FDC2B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>criacaoAnimal</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5BBBF133-D610-4BFD-A6E1-C958D1519774</key>
+		<string>https://github.com/sousaleonardo/criacaoAnimal.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>criacaoAnimal.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5BBBF133-D610-4BFD-A6E1-C958D1519774</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/sousaleonardo/criacaoAnimal.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5BBBF133-D610-4BFD-A6E1-C958D1519774</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5BBBF133-D610-4BFD-A6E1-C958D1519774</string>
+			<key>IDESourceControlWCCName</key>
+			<string>criacaoAnimal</string>
+		</dict>
+	</array>
+</dict>
+</plist>
