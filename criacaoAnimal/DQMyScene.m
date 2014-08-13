@@ -26,17 +26,31 @@
     }
     return self;
 }
-
+-(void)update:(NSTimeInterval)currentTime{
+    NSLog(@"%i",arc4random()%2);
+}
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self sortear];
 }
 
 -(void)sortear{
-    NSMutableArray *arraySorteio=[NSMutableArray arrayWithObjects:[NSNumber numberWithFloat:30.0],[NSNumber numberWithFloat:70.0],nil];
+    NSMutableArray *arraySorteio=[NSMutableArray arrayWithObjects:[NSNumber numberWithFloat:70.0],[NSNumber numberWithFloat:30.0],nil];
     
     float valorSorteador=arc4random()%100;
     
+    arraySorteio=[self ordenarValores:arraySorteio];
     
+    for (NSNumber *valor in arraySorteio) {
+        
+    }
 }
+-(NSMutableArray*)ordenarValores:(NSMutableArray*)array{
+    
+    NSSortDescriptor *crescente = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    [array sortUsingDescriptors:[NSArray arrayWithObject:crescente]];
+    
+    return array;
+}
+
 
 @end
