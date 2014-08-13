@@ -28,11 +28,15 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
+    [self sortear];
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+-(void)sortear{
+    NSMutableArray *arraySorteio=[NSMutableArray arrayWithObjects:[NSNumber numberWithFloat:30.0],[NSNumber numberWithFloat:70.0],nil];
+    
+    float valorSorteador=arc4random()%100;
+    
+    
 }
 
 @end

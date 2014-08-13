@@ -16,16 +16,16 @@
         self.spriteAnimal=[SKSpriteNode spriteNodeWithImageNamed:imagemAnimal];
         self.raioVisao=rVisao;
         self.nomeAnimal=nome;
-        self.distanciaAndar=60;
+        self.distanciaAndar=100;
         self.tempoAndar=2;
         
         
         [self addChild:self.spriteAnimal];
         [self.spriteAnimal setScale:0.9f];
         
-        self.dirCaminhada='D';
+        self.dirCaminhada='E';
         
-        [self atacar];
+        [self andar];
     }
     return self;
 }
@@ -44,8 +44,10 @@
     }
     
     if (andar) {
-        [self runAction:[SKAction sequence:@[andar,[SKAction performSelector:@selector(pararAnimacao) onTarget:self]]]];
         [self iniciarAnimacao:@"andando"];
+        [self runAction:andar completion:^{
+            [self pararAnimacao];
+        }];
     }
     
 }
@@ -56,7 +58,7 @@
 }
 
 -(void)atacar{
-
+    
     [self iniciarAnimacao:@"atacando"];
     [self pararAnimacao];
 }
@@ -69,9 +71,9 @@
     return NSSelectorFromString([self.acoes firstObject]);
 }
 
--(void)x{
+-(void)animarAnimal{
     [self.spriteAnimal runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:framesAnimacao
-                                                                                timePerFrame:0.3f
+                                                                                timePerFrame:0.2f
                                                                                       resize:NO
                                                                                      restore:YES]] withKey:@"animandoAnimal"];
 }
@@ -104,5 +106,9 @@
     } else {
         return YES;
     }
+}
+
+-(BOOL)serCapturaChance:(float)chance{
+    return NO;
 }
 @end

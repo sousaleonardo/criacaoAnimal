@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		942E8104199AA67A00D3FAF6 /* DQAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = C56187AF198F048A0021AE64 /* DQAnimal.m */; };
-		C55A4D6F198FBE7A00C5B87E /* DQJogador.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A4D6E198FBE7A00C5B87E /* DQJogador.m */; };
 		C55A4D71198FBF1E00C5B87E /* Leopardinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */; };
 		C55A4D74198FC56600C5B87E /* DQIsca.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A4D73198FC56600C5B87E /* DQIsca.m */; };
 		C5618773198F04760021AE64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5618772198F04760021AE64 /* Foundation.framework */; };
@@ -42,8 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C55A4D6D198FBE7A00C5B87E /* DQJogador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQJogador.h; sourceTree = "<group>"; };
-		C55A4D6E198FBE7A00C5B87E /* DQJogador.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQJogador.m; sourceTree = "<group>"; };
 		C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopardinho.atlas; sourceTree = "<group>"; };
 		C55A4D72198FC56600C5B87E /* DQIsca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQIsca.h; sourceTree = "<group>"; };
 		C55A4D73198FC56600C5B87E /* DQIsca.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQIsca.m; sourceTree = "<group>"; };
@@ -106,8 +103,6 @@
 				C55A4D73198FC56600C5B87E /* DQIsca.m */,
 				C56187AE198F048A0021AE64 /* DQAnimal.h */,
 				C56187AF198F048A0021AE64 /* DQAnimal.m */,
-				C55A4D6D198FBE7A00C5B87E /* DQJogador.h */,
-				C55A4D6E198FBE7A00C5B87E /* DQJogador.m */,
 				C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */,
 				C561877A198F04760021AE64 /* criacaoAnimal */,
 				C561879E198F04760021AE64 /* criacaoAnimalTests */,
@@ -286,7 +281,6 @@
 				C5618781198F04760021AE64 /* main.m in Sources */,
 				C56187B0198F048A0021AE64 /* DQAnimal.m in Sources */,
 				C561878B198F04760021AE64 /* DQViewController.m in Sources */,
-				C55A4D6F198FBE7A00C5B87E /* DQJogador.m in Sources */,
 				C5618785198F04760021AE64 /* DQAppDelegate.m in Sources */,
 				C55A4D74198FC56600C5B87E /* DQIsca.m in Sources */,
 				C561878E198F04760021AE64 /* DQMyScene.m in Sources */,

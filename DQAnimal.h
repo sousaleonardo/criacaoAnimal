@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, Personalidade) {
 
 @property SKSpriteNode *spriteAnimal;
 @property NSString *nomeAnimal;
+@property NSString *acaoAtual;
 @property float distanciaAndar;
 @property float tempoAndar;
 
