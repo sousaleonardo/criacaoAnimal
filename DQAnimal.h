@@ -35,12 +35,16 @@ typedef NS_ENUM(NSInteger, Personalidade) {
 @property NSMutableArray *acoes;
 
 -(id)initAnimalNome:(NSString*)nome sprite:(NSString*)imagemAnimal raioVisao:(float)rVisao;
+-(void)andar;
+-(void)pararAnimacao;
+-(void)atacar;
+-(void)rastrearAreaBackground:(SKNode*)background;
 -(void)animarAnimal;
 -(void)listarAcoes;
 -(void)realizarAcao;
--(void)andar;
--(void)rastrearAreaBackground:(SKNode*)background;
+-(void)iniciarAnimacao:(NSString*)tipoAnimacao;
 -(void)fugir;
--(void)atacar;
-
+-(void)parar;
+-(BOOL)serCapturaChance:(float)chance :(DQIsca*)isca;
+-(SEL)seletorProxAcao;
 @end

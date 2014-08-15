@@ -10,10 +10,12 @@
 #import "DQAnimal.h"
 #import "DQUteis.h"
 #import "DQAnimalLeopardinho.h"
+#import "DQAnimalCoelho.h"
+#import "DQAnimalToupeira.h"
 
 @interface DQMyScene : SKScene
 
-@property DQAnimalLeopardinho *animal;
+@property DQAnimalToupeira *animal;
 @property SKSpriteNode *pontoUm;
 @property SKSpriteNode *pontoDois;
 

@@ -18,14 +18,10 @@
         self.raioVisao=rVisao;
         self.nomeAnimal=nome;
         self.acoes =[NSMutableArray array];
-        self.nAcoesVez=5;
+        self.nAcoesVez=2;
         
-        [self iniciarAnimacao:@"andando"];
         [self addChild:self.spriteAnimal];
-        
-        self.dirCaminhada='E';
-        
-        [self listarAcoes];
+        [self setName:@"animal"];
     }
     return self;
 }
@@ -48,14 +44,14 @@
         
         [self iniciarAnimacao:@"andando"];
         [self animarAnimal];
-        [self.spriteAnimal runAction:andar completion:^{
+        [self runAction:andar completion:^{
             [self pararAnimacao];
         }];
     }
-    
 }
 
 -(void)pararAnimacao{
+    self.acaoAtual=nil;
     [self removeActionForKey:@"andando"];
     [self.spriteAnimal removeActionForKey:@"animandoAnimal"];
 }
@@ -71,32 +67,35 @@
 
 -(void)rastrearAreaBackground:(SKNode*)background{
     for (SKNode *node in background.children) {
-        if (self.raioVisao > [DQUteis calcularDistanciaPontos:self.position  ponto2:node.position]) {
-            NSLog(@"nome jogador %@",node.name);
-            
-            //Encontrou um jogador no raio de visao
-            if ([node.name isEqualToString:@"jogador"]) {
-                //Verifica a pesonalidade do animal
-                if ([self personalidade]==Agressivo ) {
-                    //DECISAO DE ATACAR LEVANDO EM CONSIDERAÇÃO A PERSONALIDADE
-                    
-                    //Sorteia se ataca ou se anda
-                    if ([DQUteis sortearChanceSim:80]) {
-                        [self.acoes insertObject:@"atacar" atIndex:0];
+        if (![node.name isEqualToString:self.name]) {
+            if (self.raioVisao > [DQUteis calcularDistanciaPontos:self.position  ponto2:node.position]) {
+                //Encontrou um jogador no raio de visao
+                if ([node.name isEqualToString:@"jogador"]) {
+                    //Verifica a pesonalidade do animal
+                    if ([self personalidade]==Agressivo ) {
+                        //DECISAO DE ATACAR LEVANDO EM CONSIDERAÇÃO A PERSONALIDADE
+                        
+                        //Sorteia se ataca ou se anda
+                        if ([DQUteis sortearChanceSim:80]) {
+                            [self.acoes insertObject:@"atacar" atIndex:0];
+                        }else{
+                            //Sorteou p nao atacar
+                            [self.acoes insertObject:@"fugir" atIndex:0];
+                        }
                     }else{
-                        //Sorteou p nao atacar
+                        //Nao é agressivo
                         [self.acoes insertObject:@"fugir" atIndex:0];
                     }
                 }else{
-                    //Nao é agressivo
-                    [self.acoes insertObject:@"fugir" atIndex:0];
+                    //Jogador nao esta no raoi de visao
+                    [self listarAcoes];
                 }
-                
-            }else{
-                //Jogador nao esta no raoi de visao
-                [self listarAcoes];
             }
         }
+    }
+    
+    if ([self.acoes count]==0) {
+        [self listarAcoes];
     }
 }
 
@@ -133,11 +132,11 @@
         
         //Sorteia se ataca ou se anda
         if ([DQUteis sortearChanceSim:chanceAndar]) {
-            [self.acoes addObject:@"andar"];
-            
+            [self.acoes addObject:@"andar"];  
         }else{
             [self.acoes addObject:@"parar"];
         }
+        NSLog(@"%@",[self.acoes objectAtIndex:self.acoes.count-1]);
     }
 }
 
@@ -147,7 +146,7 @@
             [self performSelector:[self seletorProxAcao]];
             [self.acoes removeObjectAtIndex:0];
         }else{
-            [self rastrearAreaBackground:self.parent];
+            [self rastrearAreaBackground:self.scene];
         }
     }
 }

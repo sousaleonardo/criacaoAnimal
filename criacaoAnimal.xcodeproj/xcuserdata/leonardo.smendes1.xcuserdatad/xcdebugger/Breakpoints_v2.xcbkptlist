@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "criacaoAnimal/DQMyScene.m"
-            timestampString = "429822888.624085"
+            filePath = "DQAnimalCoelho.m"
+            timestampString = "429829057.023281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-touchesEnded:withEvent:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-andar"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,29 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "criacaoAnimal/DQMyScene.m"
-            timestampString = "429822888.624085"
+            filePath = "DQAnimalCoelho.m"
+            timestampString = "429829057.023281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "-configuraPontos"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DQAnimal.m"
-            timestampString = "429821345.015787"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-atacar"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-andar"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,28 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DQAnimal.m"
-            timestampString = "429822472.143842"
+            timestampString = "429829601.215135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-rastrearAreaBackground:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DQAnimal.m"
-            timestampString = "429822707.927716"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-listarAcoes"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "-andar"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

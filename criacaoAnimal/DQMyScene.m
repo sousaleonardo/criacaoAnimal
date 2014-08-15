@@ -18,11 +18,9 @@
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         [self configuraPontos];
         
-        self.animal=[[DQAnimalLeopardinho alloc]initLeopardinho];
+        self.animal=[[DQAnimalToupeira alloc]initToupeira];
         [self.animal setPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
         [self addChild:self.animal];
-
-
     }
     return self;
 }
