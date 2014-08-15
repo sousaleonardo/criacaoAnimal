@@ -36,4 +36,7 @@ typedef NS_ENUM(NSInteger, Personalidade) {
 
 -(id)initAnimalNome:(NSString*)nome sprite:(NSString*)imagemAnimal raioVisao:(float)rVisao;
 -(void)animarAnimal;
+-(void)listarAcoes;
+-(void)realizarAcao;
+-(void)andar;
 @end

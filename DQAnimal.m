@@ -7,6 +7,7 @@
 //
 
 #import "DQAnimal.h"
+#import "DQUteis.h"
 
 @implementation DQAnimal
 
@@ -16,16 +17,14 @@
         self.spriteAnimal=[SKSpriteNode spriteNodeWithImageNamed:imagemAnimal];
         self.raioVisao=rVisao;
         self.nomeAnimal=nome;
-        self.distanciaAndar=100;
-        self.tempoAndar=2;
+        self.acoes =[NSMutableArray array];
         
-        
+        [self iniciarAnimacao:@"andando"];
         [self addChild:self.spriteAnimal];
-        [self.spriteAnimal setScale:0.9f];
         
         self.dirCaminhada='E';
         
-        [self andar];
+        [self listarAcoes];
     }
     return self;
 }
@@ -44,8 +43,11 @@
     }
     
     if (andar) {
+        self.acaoAtual=@"andar";
+        
         [self iniciarAnimacao:@"andando"];
-        [self runAction:andar completion:^{
+        [self animarAnimal];
+        [self.spriteAnimal runAction:andar completion:^{
             [self pararAnimacao];
         }];
     }
@@ -58,13 +60,30 @@
 }
 
 -(void)atacar{
+    self.acaoAtual=@"atacar";
     
     [self iniciarAnimacao:@"atacando"];
-    [self pararAnimacao];
+    [self runAction:[SKAction performSelector:@selector(animarAnimal) onTarget:self]completion:^{
+        [self pararAnimacao];
+    }];
+    
 }
 
--(void)rastrearArea{
-    
+-(void)rastrearAreaBackground:(SKNode*)background{
+    for (SKNode *node in background.children) {
+        if (self.raioVisao > [DQUteis calcularDistanciaPontos:self.position  ponto2:node.position]) {
+            //Encontrou um jogador no raio de visao
+            if (![node.name isEqualToString:@"jogador"]) {
+                //Verifica a pesonalidade do animal
+                if ([self personalidade]==Agressivo ) {
+                    [self.acoes insertObject:@"atacar" atIndex:0];
+                }else if ([self personalidade]==Docil){
+                    [self.acoes insertObject:@"fugir" atIndex:0];
+                }
+            }
+            
+        };
+    }
 }
 
 -(SEL)seletorProxAcao{
@@ -72,10 +91,39 @@
 }
 
 -(void)animarAnimal{
-    [self.spriteAnimal runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:framesAnimacao
-                                                                                timePerFrame:0.2f
-                                                                                      resize:NO
-                                                                                     restore:YES]] withKey:@"animandoAnimal"];
+    
+    if ([self.acaoAtual isEqualToString:@"andar"]) {
+        
+        [self.spriteAnimal runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:framesAnimacao
+                                                                                    timePerFrame:0.2f
+                                                                                          resize:NO
+                                                                                         restore:YES]] withKey:@"animandoAnimal"];
+    }else{
+        [self.spriteAnimal runAction:[SKAction animateWithTextures:framesAnimacao
+                                                      timePerFrame:0.2f
+                                                            resize:NO
+                                                           restore:YES] withKey:@"animandoAnimal"];
+    }
+}
+
+-(void)listarAcoes{
+    
+    [self.acoes addObject:@"andar"];
+    [self.acoes addObject:@"andar"];
+    [self.acoes addObject:@"atacar"];
+    [self.acoes addObject:@"atacar"];
+    [self.acoes addObject:@"andar"];
+}
+
+-(void)realizarAcao{
+    if (![self.spriteAnimal hasActions]) {
+        if ([self.acoes count]>0) {
+            [self performSelector:[self seletorProxAcao]];
+            [self.acoes removeObjectAtIndex:0];
+        }else{
+            [self rastrearAreaBackground:self.parent];
+        }
+    }
 }
 
 -(void)iniciarAnimacao:(NSString*)tipoAnimacao{
@@ -86,7 +134,7 @@
     int nImagens=0;
     
     for (NSString *nomeTextura in [pastaFrames textureNames]) {
-        if ([self string:nomeTextura contemPalavra:tipoAnimacao]) {
+        if ([DQUteis string:nomeTextura contemPalavra:tipoAnimacao]) {
             nImagens++;
         }
     }
@@ -99,14 +147,10 @@
         [framesAnimacao addObject:temp];
     }
 }
-
--(BOOL)string:(NSString*)strTestar contemPalavra:(NSString*)palavraProcurada{
-    if ([strTestar rangeOfString:palavraProcurada].location ==NSNotFound){
-        return NO;
-    } else {
-        return YES;
-    }
+-(void)fugir{
+    NSLog(@"fugiu!");
 }
+
 
 -(BOOL)serCapturaChance:(float)chance{
     return NO;

@@ -8,29 +8,50 @@
 
 #import "DQMyScene.h"
 
+
 @implementation DQMyScene
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         
-        DQAnimal *animal=[[DQAnimal alloc]initAnimalNome:@"Leopardinho" sprite:@"andando1" raioVisao:50.0f];
-        
-        [animal setPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
-        
-        [self addChild:animal];
-        
-        [animal animarAnimal];
+        self.animal=[[DQAnimalLeopardinho alloc]initAnimalNome:@"Leopardinho" sprite:@"andando1" raioVisao:50.0f];
+        [self.animal setPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
+        [self addChild:self.animal];
+
+        [self configuraPontos];
     }
     return self;
 }
+
 -(void)update:(NSTimeInterval)currentTime{
-    NSLog(@"%i",arc4random()%2);
+    [self.animal realizarAcao];
 }
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+    
+    
+}
+
+-(void)configuraPontos{
+    self.pontoUm=[SKSpriteNode spriteNodeWithColor:[UIColor purpleColor] size:CGSizeMake(100, 100)];
+    self.pontoDois=[SKSpriteNode spriteNodeWithColor:[UIColor redColor] size:CGSizeMake(100, 100)];
+    
+    [self.pontoUm setPosition:CGPointMake(CGRectGetMinX(self.frame), CGRectGetMidY(self.frame))];
+    [self.pontoDois setPosition:CGPointMake(CGRectGetMaxX(self.frame), CGRectGetMidY(self.frame))];
+    
+    [self.pontoUm setName:@"jogador"];
+    [self.pontoDois setName:@"ponto2"];
+    
+    [self addChild:self.pontoUm];
+    [self addChild:self.pontoDois];
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self sortear];
+    [self.pontoDois setPosition:CGPointMake(self.pontoDois.position.x-100, self.pontoDois.position.y)];
 }
 
 -(void)sortear{
@@ -44,6 +65,7 @@
         
     }
 }
+
 -(NSMutableArray*)ordenarValores:(NSMutableArray*)array{
     
     NSSortDescriptor *crescente = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];

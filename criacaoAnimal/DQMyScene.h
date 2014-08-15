@@ -8,7 +8,14 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "DQAnimal.h"
+#import "DQUteis.h"
+#import "DQAnimalLeopardinho.h"
 
 @interface DQMyScene : SKScene
+
+@property DQAnimalLeopardinho *animal;
+@property SKSpriteNode *pontoUm;
+@property SKSpriteNode *pontoDois;
+
 
 @end
