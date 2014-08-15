@@ -10,8 +10,8 @@
 
 @implementation DQAnimalLeopardinho
 
--(id)initAnimalNome:(NSString *)nome sprite:(NSString *)imagemAnimal raioVisao:(float)rVisao{
-    if ([super initAnimalNome:nome sprite:imagemAnimal raioVisao:500]) {
+-(id)initLeopardinho{
+    if ([super initAnimalNome:@"Leopardinho" sprite:@"andando1" raioVisao:200]) {
         [self.spriteAnimal setScale:0.9f];
         
         self.distanciaAndar=100;
@@ -20,4 +20,5 @@
     }
     return self;
 }
+
 @end

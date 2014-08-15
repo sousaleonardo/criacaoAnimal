@@ -39,4 +39,8 @@ typedef NS_ENUM(NSInteger, Personalidade) {
 -(void)listarAcoes;
 -(void)realizarAcao;
 -(void)andar;
+-(void)rastrearAreaBackground:(SKNode*)background;
+-(void)fugir;
+-(void)atacar;
+
 @end

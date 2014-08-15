@@ -10,4 +10,5 @@
 
 @interface DQAnimalLeopardinho : DQAnimal
 
+-(id)initLeopardinho;
 @end

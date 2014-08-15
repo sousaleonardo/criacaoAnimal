@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		942E8104199AA67A00D3FAF6 /* DQAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = C56187AF198F048A0021AE64 /* DQAnimal.m */; };
+		C54D0000199DAE3F0014FDA5 /* Toupeira.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C54DFFFE199DAE3F0014FDA5 /* Toupeira.atlas */; };
+		C54D0001199DAE3F0014FDA5 /* Coelho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C54DFFFF199DAE3F0014FDA5 /* Coelho.atlas */; };
 		C54DFFFD199DAC0F0014FDA5 /* DQAnimalLeopardinho.m in Sources */ = {isa = PBXBuildFile; fileRef = C54DFFFC199DAC0F0014FDA5 /* DQAnimalLeopardinho.m */; };
 		C55A4D71198FBF1E00C5B87E /* Leopardinho.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */; };
 		C55A4D74198FC56600C5B87E /* DQIsca.m in Sources */ = {isa = PBXBuildFile; fileRef = C55A4D73198FC56600C5B87E /* DQIsca.m */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		C54DFFFB199DAC0F0014FDA5 /* DQAnimalLeopardinho.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQAnimalLeopardinho.h; sourceTree = "<group>"; };
 		C54DFFFC199DAC0F0014FDA5 /* DQAnimalLeopardinho.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQAnimalLeopardinho.m; sourceTree = "<group>"; };
+		C54DFFFE199DAE3F0014FDA5 /* Toupeira.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Toupeira.atlas; sourceTree = "<group>"; };
+		C54DFFFF199DAE3F0014FDA5 /* Coelho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Coelho.atlas; sourceTree = "<group>"; };
 		C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Leopardinho.atlas; sourceTree = "<group>"; };
 		C55A4D72198FC56600C5B87E /* DQIsca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQIsca.h; sourceTree = "<group>"; };
 		C55A4D73198FC56600C5B87E /* DQIsca.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQIsca.m; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				C54DFFFC199DAC0F0014FDA5 /* DQAnimalLeopardinho.m */,
 				C59F03C5199D4C8A00DBC3FB /* DQUteis.h */,
 				C59F03C6199D4C8A00DBC3FB /* DQUteis.m */,
+				C54DFFFE199DAE3F0014FDA5 /* Toupeira.atlas */,
+				C54DFFFF199DAE3F0014FDA5 /* Coelho.atlas */,
 				C55A4D70198FBF1E00C5B87E /* Leopardinho.atlas */,
 				C561877A198F04760021AE64 /* criacaoAnimal */,
 				C561879E198F04760021AE64 /* criacaoAnimalTests */,
@@ -265,7 +271,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54D0000199DAE3F0014FDA5 /* Toupeira.atlas in Resources */,
 				C55A4D71198FBF1E00C5B87E /* Leopardinho.atlas in Resources */,
+				C54D0001199DAE3F0014FDA5 /* Coelho.atlas in Resources */,
 				C561877F198F04760021AE64 /* InfoPlist.strings in Resources */,
 				C5618792198F04760021AE64 /* Images.xcassets in Resources */,
 				C5618790198F04760021AE64 /* Spaceship.png in Resources */,

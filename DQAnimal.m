@@ -108,11 +108,7 @@
 
 -(void)listarAcoes{
     
-    [self.acoes addObject:@"andar"];
-    [self.acoes addObject:@"andar"];
-    [self.acoes addObject:@"atacar"];
-    [self.acoes addObject:@"atacar"];
-    [self.acoes addObject:@"andar"];
+
 }
 
 -(void)realizarAcao{
