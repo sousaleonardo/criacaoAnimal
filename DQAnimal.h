@@ -29,10 +29,10 @@ typedef NS_ENUM(NSInteger, Personalidade) {
 @property float raioVisao;
 @property char dirCaminhada;
 @property Personalidade personalidade;
+@property int nAcoesVez;
 
 @property DQIsca *objetoAtracao;
 @property NSMutableArray *acoes;
-
 
 -(id)initAnimalNome:(NSString*)nome sprite:(NSString*)imagemAnimal raioVisao:(float)rVisao;
 -(void)animarAnimal;

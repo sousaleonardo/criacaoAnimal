@@ -16,20 +16,21 @@
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        [self configuraPontos];
         
         self.animal=[[DQAnimalLeopardinho alloc]initLeopardinho];
         [self.animal setPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
         [self addChild:self.animal];
 
-        [self configuraPontos];
+
     }
     return self;
 }
 
 -(void)update:(NSTimeInterval)currentTime{
     [self.animal realizarAcao];
+    
 }
-
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
     
@@ -44,7 +45,7 @@
     [self.pontoDois setPosition:CGPointMake(CGRectGetMaxX(self.frame), CGRectGetMidY(self.frame))];
     
     [self.pontoUm setName:@"jogador"];
-    [self.pontoDois setName:@"ponto2"];
+    [self.pontoDois setName:@"jogador"];
     
     [self addChild:self.pontoUm];
     [self addChild:self.pontoDois];
@@ -53,26 +54,5 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.pontoDois setPosition:CGPointMake(self.pontoDois.position.x-100, self.pontoDois.position.y)];
 }
-
--(void)sortear{
-    NSMutableArray *arraySorteio=[NSMutableArray arrayWithObjects:[NSNumber numberWithFloat:70.0],[NSNumber numberWithFloat:30.0],nil];
-    
-    float valorSorteador=arc4random()%100;
-    
-    arraySorteio=[self ordenarValores:arraySorteio];
-    
-    for (NSNumber *valor in arraySorteio) {
-        
-    }
-}
-
--(NSMutableArray*)ordenarValores:(NSMutableArray*)array{
-    
-    NSSortDescriptor *crescente = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
-    [array sortUsingDescriptors:[NSArray arrayWithObject:crescente]];
-    
-    return array;
-}
-
 
 @end

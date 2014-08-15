@@ -12,4 +12,6 @@
 
 +(BOOL)string:(NSString*)strTestar contemPalavra:(NSString*)palavraProcurada;
 +(float)calcularDistanciaPontos:(CGPoint)primeiroPonto ponto2:(CGPoint)segundoPonto;
++(NSMutableArray*)ordenarValores:(NSMutableArray*)array;
++(BOOL)sortearChanceSim:(float)chanceSim;
 @end

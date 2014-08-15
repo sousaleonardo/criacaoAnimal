@@ -18,6 +18,7 @@
         self.raioVisao=rVisao;
         self.nomeAnimal=nome;
         self.acoes =[NSMutableArray array];
+        self.nAcoesVez=5;
         
         [self iniciarAnimacao:@"andando"];
         [self addChild:self.spriteAnimal];
@@ -66,23 +67,36 @@
     [self runAction:[SKAction performSelector:@selector(animarAnimal) onTarget:self]completion:^{
         [self pararAnimacao];
     }];
-    
 }
 
 -(void)rastrearAreaBackground:(SKNode*)background{
     for (SKNode *node in background.children) {
         if (self.raioVisao > [DQUteis calcularDistanciaPontos:self.position  ponto2:node.position]) {
+            NSLog(@"nome jogador %@",node.name);
+            
             //Encontrou um jogador no raio de visao
-            if (![node.name isEqualToString:@"jogador"]) {
+            if ([node.name isEqualToString:@"jogador"]) {
                 //Verifica a pesonalidade do animal
                 if ([self personalidade]==Agressivo ) {
-                    [self.acoes insertObject:@"atacar" atIndex:0];
-                }else if ([self personalidade]==Docil){
+                    //DECISAO DE ATACAR LEVANDO EM CONSIDERAÇÃO A PERSONALIDADE
+                    
+                    //Sorteia se ataca ou se anda
+                    if ([DQUteis sortearChanceSim:80]) {
+                        [self.acoes insertObject:@"atacar" atIndex:0];
+                    }else{
+                        //Sorteou p nao atacar
+                        [self.acoes insertObject:@"fugir" atIndex:0];
+                    }
+                }else{
+                    //Nao é agressivo
                     [self.acoes insertObject:@"fugir" atIndex:0];
                 }
+                
+            }else{
+                //Jogador nao esta no raoi de visao
+                [self listarAcoes];
             }
-            
-        };
+        }
     }
 }
 
@@ -107,8 +121,24 @@
 }
 
 -(void)listarAcoes{
-    
-
+    for (int i=0; i<self.nAcoesVez; i++) {
+        float chanceAndar;
+        
+        //DECISAO DE andar LEVANDO EM CONSIDERAÇÃO A PERSONALIDADE
+        if (self.personalidade == Agressivo) {
+            chanceAndar=90;
+        }else{
+            chanceAndar=70;
+        }
+        
+        //Sorteia se ataca ou se anda
+        if ([DQUteis sortearChanceSim:chanceAndar]) {
+            [self.acoes addObject:@"andar"];
+            
+        }else{
+            [self.acoes addObject:@"parar"];
+        }
+    }
 }
 
 -(void)realizarAcao{
@@ -145,10 +175,24 @@
 }
 -(void)fugir{
     NSLog(@"fugiu!");
+    
+    //Inverte a direcao de caminhada
+    if (self.dirCaminhada=='D') {
+        self.dirCaminhada='E';
+    }else{
+        self.dirCaminhada='D';
+    }
+    
+    [self andar];
 }
 
+-(void)parar{
+    NSLog(@"parou");
+    [self pararAnimacao];
+}
 
--(BOOL)serCapturaChance:(float)chance{
+-(BOOL)serCapturaChance:(float)chance :(DQIsca*)isca{
     return NO;
 }
+
 @end

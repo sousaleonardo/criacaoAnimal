@@ -21,4 +21,23 @@
 +(float)calcularDistanciaPontos:(CGPoint)primeiroPonto ponto2:(CGPoint)segundoPonto{
     return hypotf(segundoPonto.x - primeiroPonto.x, segundoPonto.y - primeiroPonto.y);
 }
+
++(NSMutableArray*)ordenarValores:(NSMutableArray*)array{
+    
+    NSSortDescriptor *crescente = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    [array sortUsingDescriptors:[NSArray arrayWithObject:crescente]];
+    
+    return array;
+}
+
++(BOOL)sortearChanceSim:(float)chanceSim{
+    float valorSorteardo=(float)(arc4random()%100)/100;
+    
+    if (valorSorteardo < (chanceSim/100)) {
+        return YES;
+    }else{
+        return NO;
+    }
+    
+}
 @end

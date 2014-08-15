@@ -11,7 +11,7 @@
 @implementation DQAnimalLeopardinho
 
 -(id)initLeopardinho{
-    if ([super initAnimalNome:@"Leopardinho" sprite:@"andando1" raioVisao:200]) {
+    if ([super initAnimalNome:@"Leopardinho" sprite:@"andando1" raioVisao:10]) {
         [self.spriteAnimal setScale:0.9f];
         
         self.distanciaAndar=100;
