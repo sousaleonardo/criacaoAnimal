@@ -7,6 +7,7 @@
 //
 
 #import "DQAnimal.h"
+#import "DQUteis.h"
 
 @interface DQAnimalToupeira : DQAnimal
 

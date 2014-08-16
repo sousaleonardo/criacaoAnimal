@@ -47,4 +47,5 @@ typedef NS_ENUM(NSInteger, Personalidade) {
 -(void)parar;
 -(BOOL)serCapturaChance:(float)chance :(DQIsca*)isca;
 -(SEL)seletorProxAcao;
+-(void)acaoAoColidirComJogador:(SKNode*)jogador;
 @end

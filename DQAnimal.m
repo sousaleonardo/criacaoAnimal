@@ -44,6 +44,7 @@
         
         [self iniciarAnimacao:@"andando"];
         [self animarAnimal];
+        
         [self runAction:andar completion:^{
             [self pararAnimacao];
         }];
@@ -87,7 +88,7 @@
                         [self.acoes insertObject:@"fugir" atIndex:0];
                     }
                 }else{
-                    //Jogador nao esta no raoi de visao
+                    //Jogador nao esta no raio de visao
                     [self listarAcoes];
                 }
             }
@@ -96,6 +97,13 @@
     
     if ([self.acoes count]==0) {
         [self listarAcoes];
+    }
+}
+-(void)inverterDirecao{
+    if (self.dirCaminhada=='D') {
+        self.dirCaminhada='E';
+    }else{
+        self.dirCaminhada='D';
     }
 }
 
@@ -136,7 +144,10 @@
         }else{
             [self.acoes addObject:@"parar"];
         }
-        NSLog(@"%@",[self.acoes objectAtIndex:self.acoes.count-1]);
+    }
+    
+    if ([DQUteis sortearChanceSim:50.0f]) {
+        [self.acoes addObject:@"inverterDirecao"];
     }
 }
 
@@ -194,4 +205,7 @@
     return NO;
 }
 
+-(void)acaoAoColidirComJogador:(SKNode*)jogador{
+    NSLog(@"colidiu com o jogador");
+}
 @end

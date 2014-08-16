@@ -51,6 +51,8 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.pontoDois setPosition:CGPointMake(self.pontoDois.position.x-100, self.pontoDois.position.y)];
+    
+    [self.animal fugir];
 }
 
 @end
