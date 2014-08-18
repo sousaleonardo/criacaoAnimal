@@ -10,5 +10,8 @@
 
 @interface DQIsca : NSObject
 
+@property NSString *objeto;
+@property NSString *detalhe;
 
+-(id)initIsca;
 @end

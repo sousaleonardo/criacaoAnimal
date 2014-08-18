@@ -19,6 +19,7 @@
         self.nomeAnimal=nome;
         self.acoes =[NSMutableArray array];
         self.nAcoesVez=2;
+        self.objetoAtracao=[[DQIsca alloc]initIsca];
         
         [self addChild:self.spriteAnimal];
         [self setName:@"animal"];
@@ -112,13 +113,18 @@
 }
 
 -(void)animarAnimal{
-    
     if ([self.acaoAtual isEqualToString:@"andar"]) {
         
         [self.spriteAnimal runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:framesAnimacao
                                                                                     timePerFrame:0.2f
                                                                                           resize:NO
                                                                                          restore:YES]] withKey:@"animandoAnimal"];
+    }else if ([self.acaoAtual isEqualToString:@"fugindo"]){
+        [self.spriteAnimal runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:framesAnimacao
+                                                                                    timePerFrame:0.2f
+                                                                                          resize:NO
+                                                                                         restore:YES]] withKey:@"animandoAnimal"];
+        
     }else{
         [self.spriteAnimal runAction:[SKAction animateWithTextures:framesAnimacao
                                                       timePerFrame:0.2f
@@ -140,7 +146,7 @@
         
         //Sorteia se ataca ou se anda
         if ([DQUteis sortearChanceSim:chanceAndar]) {
-            [self.acoes addObject:@"andar"];  
+            [self.acoes addObject:@"andar"];
         }else{
             [self.acoes addObject:@"parar"];
         }
@@ -184,7 +190,11 @@
     }
 }
 -(void)fugir{
-    NSLog(@"fugiu!");
+    //Remove as açoes do animal
+    [self removeAllActions];
+    
+    //limpa a lista de acoes do animal
+    [self.acoes removeAllObjects];
     
     //Inverte a direcao de caminhada
     if (self.dirCaminhada=='D') {
@@ -197,12 +207,21 @@
 }
 
 -(void)parar{
-    NSLog(@"parou");
     [self pararAnimacao];
 }
 
 -(BOOL)serCapturaChance:(float)chance :(DQIsca*)isca{
-    return NO;
+    if (self.personalidade == Docil) {
+        chance+=5.0;
+    }else if (self.personalidade == Agressivo){
+        chance-=10.0;
+    }
+    
+    if (([[self.objetoAtracao objeto]isEqualToString:isca.objeto])&&([[self.objetoAtracao detalhe]isEqualToString:isca.detalhe])) {
+        chance+=30.0;
+    }
+    
+    return [DQUteis sortearChanceSim:chance];
 }
 
 -(void)acaoAoColidirComJogador:(SKNode*)jogador{

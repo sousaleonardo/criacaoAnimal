@@ -15,7 +15,7 @@
 
 @interface DQMyScene : SKScene
 
-@property DQAnimalToupeira *animal;
+@property DQAnimalCoelho *animal;
 @property SKSpriteNode *pontoUm;
 @property SKSpriteNode *pontoDois;
 

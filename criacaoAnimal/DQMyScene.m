@@ -18,7 +18,7 @@
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         [self configuraPontos];
         
-        self.animal=[[DQAnimalToupeira alloc]initToupeira];
+        self.animal=[[DQAnimalCoelho alloc]initCoelho];
         [self.animal setPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
         [self addChild:self.animal];
     }
@@ -27,12 +27,12 @@
 
 -(void)update:(NSTimeInterval)currentTime{
     [self.animal realizarAcao];
-    
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
     
-    
+    //[self.animal acaoAoColidirComJogador:self.pontoUm];
+    [self.animal fugir];
 }
 
 -(void)configuraPontos{
@@ -48,11 +48,4 @@
     [self addChild:self.pontoUm];
     [self addChild:self.pontoDois];
 }
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.pontoDois setPosition:CGPointMake(self.pontoDois.position.x-100, self.pontoDois.position.y)];
-    
-    [self.animal fugir];
-}
-
 @end

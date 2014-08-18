@@ -11,5 +11,7 @@
 
 @interface DQAnimalToupeira : DQAnimal
 
+@property float distanciaCorrer;
+
 -(id)initToupeira;
 @end

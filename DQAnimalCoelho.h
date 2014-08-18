@@ -9,5 +9,7 @@
 #import "DQAnimal.h"
 
 @interface DQAnimalCoelho : DQAnimal
+@property float distanciaCorrer;
+
 -(id)initCoelho;
 @end

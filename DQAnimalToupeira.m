@@ -16,10 +16,16 @@
         self.distanciaAndar=40;
         self.tempoAndar=2;
         self.nAcoesVez=3;
+        self.distanciaCorrer=300;
         
         [self setPersonalidade:Docil];
         [self.spriteAnimal setScale:0.9f];
         [self listarAcoes];
+        
+        
+        //Limites definidos para que o corpo fisico correponda ao tamanho do buraco da toupeira
+        [self setPhysicsBody:[SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(-40,-50, self.spriteAnimal.frame.size.width/2, 20)]];
+        [self.physicsBody setDynamic:NO];
     }
     return self;
 }
@@ -61,31 +67,30 @@
 }
 
 -(void)fugir{
-    //Remove as açoes do animal
-    [self removeAllActions];
-    
-    //limpa a lista de acoes do anima
-    [self.acoes removeAllObjects];
-    
-    [self pararAnimacao];
-    
-    self.acaoAtual=@"cavando";
-    [self iniciarAnimacao:@"cavando"];
-    
-    [self animarAnimal];
-    
-    //Chama o metodo para animar o icone de pulo apos X segundos
-    [self performSelector:@selector(animarToupeiraEscondida) withObject:nil afterDelay:1.4];
-
+    //Nao permitir q ele tente fugir apos se enconder no buraco
+    if (![self.acaoAtual isEqualToString:@"buraco"]) {
+        //Remove as açoes do animal
+        [self removeAllActions];
+        
+        //limpa a lista de acoes do anima
+        [self.acoes removeAllObjects];
+        
+        [self pararAnimacao];
+        
+        self.acaoAtual=@"cavando";
+        [self iniciarAnimacao:@"cavando"];
+        
+        [self animarAnimal];
+        
+        //Chama o metodo para animar o icone de pulo apos X segundos
+        [self performSelector:@selector(animarToupeiraEscondida) withObject:nil afterDelay:1.4];
+    }
 }
 -(void)animarToupeiraEscondida{
-        NSLog(@"acabou de terminar acao");
     self.acaoAtual=@"buraco";
     [self iniciarAnimacao:@"buraco"];
     [self animarAnimal];
 }
-
-
 
 -(void)realizarAcao{
     if ((![self.acaoAtual isEqualToString:@"buraco"]) && (![self.acaoAtual isEqualToString:@"cavando"])) {
@@ -107,20 +112,7 @@
                 //Encontrou um jogador no raio de visao
                 if ([node.name isEqualToString:@"jogador"]) {
                     //Verifica a pesonalidade do animal
-                    if ([self personalidade]==Agressivo ) {
-                        //DECISAO DE ATACAR LEVANDO EM CONSIDERAÇÃO A PERSONALIDADE
-                        
-                        //Sorteia se ataca ou se anda
-                        if ([DQUteis sortearChanceSim:80]) {
-                            [self.acoes insertObject:@"atacar" atIndex:0];
-                        }else{
-                            //Sorteou p nao atacar
-                            [self.acoes insertObject:@"fugir" atIndex:0];
-                        }
-                    }else{
-                        //Nao é agressivo
-                        [self.acoes insertObject:@"fugir" atIndex:0];
-                    }
+                    [self fugir];
                 }else{
                     //Jogador nao esta no raio de visao
                     [self listarAcoes];
@@ -140,12 +132,48 @@
 }
 
 -(void)acaoAoColidirComJogador:(SKNode*)jogador{
+    //Limpa a lista de acoes
+    [self.acoes removeAllObjects];
+    [self parar];
+    
     //Define para qual direcao irá fugir
+    if (jogador.position.x > self.position.x) {
+        self.dirCaminhada='E';
+    }else{
+        self.dirCaminhada='D';
+    }
+    self.acaoAtual = @"fugindo";
     
     //Iniciar animacao fugindo
+    [self iniciarAnimacao:@"fugindo"];
+    [self animarAnimal];
+
+    //Chama o metodo para animar o icone de pulo apos X segundos
+    [self performSelector:@selector(correr) withObject:nil afterDelay:0.8];
+}
+
+-(void)correr{
+    SKAction *correr;
     
-    //Chama faz "correr"
+    if (self.dirCaminhada=='D') {
+        correr=[SKAction moveByX:self.distanciaCorrer y:0 duration:1];
+        
+        self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*-1;
+    }else if (self.dirCaminhada=='E'){
+        correr=[SKAction moveByX:(self.distanciaCorrer * -1) y:0 duration:1];
+        
+        self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*1;
+    }
     
-    
+    if (correr) {
+        self.acaoAtual=@"fugindo";
+        
+        [self iniciarAnimacao:@"andando"];
+        [self animarAnimal];
+        
+        [self runAction:correr completion:^{
+            [self pararAnimacao];
+        }];
+    }
 }
 @end

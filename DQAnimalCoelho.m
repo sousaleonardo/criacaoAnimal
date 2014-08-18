@@ -16,36 +16,38 @@
         self.distanciaAndar=50;
         self.tempoAndar=2;
         self.nAcoesVez=5;
+        self.distanciaCorrer=300;
+        
         
         [self setZPosition:-50.0f];
         [self setPersonalidade:Docil];
         [self.spriteAnimal setScale:0.9f];
         [self listarAcoes];
+        
+        [self setPhysicsBody:[SKPhysicsBody bodyWithEdgeLoopFromRect:self.spriteAnimal.frame]];
+        [self.physicsBody setDynamic:NO];
     }
     return self;
 }
 
 -(void)parar{
+    self.acaoAtual=@"parado";
+    
     [self pararAnimacao];
     
     [self iniciarAnimacao:@"parado"];
     [self animarAnimal];
 }
 
--(void)animarAnimal{
+-(void)fugir{
+    //Remove as açoes do animal
+    [self removeAllActions];
     
-    if ([self.acaoAtual isEqualToString:@"andar"]) {
-        
-        [self.spriteAnimal runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:framesAnimacao
-                                                                                    timePerFrame:0.2f
-                                                                                          resize:NO
-                                                                                         restore:YES]] withKey:@"animandoAnimal"];
-    }else{
-        [self.spriteAnimal runAction:[SKAction animateWithTextures:framesAnimacao
-                                                      timePerFrame:0.2f
-                                                            resize:NO
-                                                           restore:YES] withKey:@"animandoAnimal"];
-    }
+    //limpa a lista de acoes do animal
+    [self.acoes removeAllObjects];
+    
+    [self iniciarAnimacao:@"correndo"];
+    [self correr];
 }
 
 -(void)andar{
@@ -67,22 +69,47 @@
         [self iniciarAnimacao:@"correndo"];
         [self animarAnimal];
         [self runAction:andar completion:^{
-            [self pararAnimacao];
+            [self parar];
         }];
     }
     
 }
+-(void)correr{
+    SKAction *correr;
+    
+    if (self.dirCaminhada=='D') {
+        correr=[SKAction moveByX:self.distanciaCorrer y:0 duration:2];
+        
+        self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*-1;
+    }else if (self.dirCaminhada=='E'){
+        correr=[SKAction moveByX:(self.distanciaCorrer * -1) y:0 duration:2];
+        
+        self.spriteAnimal.xScale = fabs(self.spriteAnimal.xScale)*1;
+    }
+    
+    if (correr) {
+        self.acaoAtual=@"fugindo";
+        
+        [self iniciarAnimacao:@"correndo"];
+        [self animarAnimal];
+        
+        [self runAction:correr completion:^{
+            [self parar];
+        }];
+    }
+}
 -(void)atacar{
     [self iniciarAnimacao:@"parado"];
     [self runAction:[SKAction performSelector:@selector(animarAnimal) onTarget:self]completion:^{
-        [self pararAnimacao];
+        [self parar];
     }];
 }
 
 -(void)realizarAcao{
     if (![self.spriteAnimal hasActions]) {
-        if ([self.acoes count]>0) {
+        if ([self.acoes count] > 0) {
             [self performSelector:[self seletorProxAcao]];
+            
             [self.acoes removeObjectAtIndex:0];
         }else{
             [self rastrearAreaBackground:self.scene];

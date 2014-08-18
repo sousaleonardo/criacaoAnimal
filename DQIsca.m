@@ -10,4 +10,11 @@
 
 @implementation DQIsca
 
+-(id)initIsca{
+    if (self=[super init]) {
+        self.objeto=@"liquido";
+        self.detalhe=@"amarelo";
+    }
+    return self;
+}
 @end
